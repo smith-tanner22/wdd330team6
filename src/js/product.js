@@ -10,7 +10,7 @@ function convertToJson(res) {
 }
 
 function setLocalStorage(key, data) {
-  localStorage.setItem(key, JSON.stringify([data]));
+  localStorage.setItem(key, JSON.stringify(data));
 }
 
 // get tents data
@@ -26,14 +26,14 @@ function getProductsData() {
 //   products = await fetch('../json/tents.json').then(convertToJson);
 // }
 
+var items = [];
 // add to cart button event handler
 function addToCart(e) {
   console.log("clicked")
   const product = products.find((item) => item.Id === e.target.dataset.id);
   console.log(product);
-  // var items = [];
-  // items.push(localStorage.getItem('so-cart'))
-  setLocalStorage(`so-cart`, product);
+  items.push(product);
+  setLocalStorage(`so-cart`, items)
 }
 
 getProductsData();
