@@ -1,5 +1,13 @@
-let products = [];
 
+import ProductData from './productData.js';
+import { getParam } from './utils.js';
+const dataSource = new ProductData('tents');
+
+const productId = getParam('product');
+
+console.log(dataSource.findProductById(productId));
+                
+let products = [];
 
 function convertToJson(res) {
   if (res.ok) {
@@ -14,13 +22,6 @@ function setLocalStorage(key, data) {
 }
 
 // get tents data
-function getProductsData() {
-  fetch('../json/tents.json')
-    .then(convertToJson)
-    .then((data) => {
-      products = data;
-    });
-}
 // or should we do it this way?
 // async function getProductsDataAwait() {
 //   products = await fetch('../json/tents.json').then(convertToJson);
@@ -29,14 +30,12 @@ function getProductsData() {
 var items = [];
 // add to cart button event handler
 function addToCart(e) {
-  console.log("clicked")
+  console.log('clicked')
   const product = products.find((item) => item.Id === e.target.dataset.id);
   console.log(product);
   items.push(product);
-  setLocalStorage(`so-cart`, items)
+  setLocalStorage('so-cart', items)
 }
-
-getProductsData();
 // add listener to Add to Cart button
 document.getElementById('addToCart').addEventListener('click', addToCart);
 
