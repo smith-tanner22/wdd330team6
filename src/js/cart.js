@@ -4,12 +4,6 @@ function getLocalStorage(key) {
 
 function getCartContents() {
   // let markup = '';
-<<<<<<< HEAD
-  const cartItems = getLocalStorage("so-cart");
-  const htmlItems = cartItems.map((item) => renderCartItem(item));
-  document.querySelector(".product-list").innerHTML = htmlItems.join("");
-  // document.querySelector(".product-list").innerHTML = renderCartItem(cartItems);
-=======
   const cartItems = getLocalStorage('so-cart');
   console.log(cartItems);
   if (cartItems) {
@@ -17,7 +11,6 @@ function getCartContents() {
     document.querySelector('.product-list').innerHTML = htmlItems.join('');
   }
   // document.querySelector('.product-list').innerHTML = renderCartItem(cartItems);
->>>>>>> refs/remotes/origin/main
 }
 
 function renderCartItem(item) {
