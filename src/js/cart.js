@@ -2,9 +2,14 @@ function getLocalStorage(key) {
   return JSON.parse(localStorage.getItem(key));
 }
 
+// Remove the element from the cart
+const items = [];
+
 function getCartContents() {
-  // let markup = '';
-  const cartItems = getLocalStorage('so-cart');
+  let markup = "";
+
+  const cartItems = getLocalStorage("so-cart");
+
   console.log(cartItems);
   if (cartItems) {
     const htmlItems = cartItems.map((item) => renderCartItem(item));
@@ -28,8 +33,33 @@ function renderCartItem(item) {
   <p class="cart-card__quantity">qty: 1</p>
   <p class='cart-card__price'>$${item.FinalPrice}</p>
 </li>`;
-  // console.log(newItem);
   return newItem;
 }
 
 getCartContents();
+
+/*****************************Added******************************************* */
+
+function hideTotal() {
+  const Items = getLocalStorage("so-cart");
+  console.log("this is hidee", Items);
+  var totalElement = document.querySelector(".cart-footer");
+  console.log(totalElement);
+  if (Items) {
+    totalElement.style.visibility = "visible";
+  } else {
+    totalElement.style.visibility = "hidden";
+  }
+  totalElement.innerHTML = "Total $" + addTotal();
+}
+
+function addTotal() {
+  const Items = getLocalStorage("so-cart");
+  var total = 0;
+  for (let index = 0; index < Object.keys(Items).length; index++) {
+    total = total + Items[index]["FinalPrice"];
+  }
+  return total;
+}
+
+hideTotal();
