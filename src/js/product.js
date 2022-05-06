@@ -22,6 +22,13 @@ function setLocalStorage(key, data) {
 }
 
 // get tents data
+function getProductsData() {
+  fetch('../json/tents.json')
+    .then(convertToJson)
+    .then((data) => {
+      products = data;
+    });
+}
 // or should we do it this way?
 // async function getProductsDataAwait() {
 //   products = await fetch('../json/tents.json').then(convertToJson);
@@ -32,6 +39,8 @@ var items = [];
 function addToCart(e) {
   console.log('clicked')
   const product = products.find((item) => item.Id === e.target.dataset.id);
+
+  setLocalStorage('so-cart', product);
   console.log(product);
   items.push(product);
   setLocalStorage('so-cart', items)
