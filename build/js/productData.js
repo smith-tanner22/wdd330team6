@@ -1,5 +1,54 @@
-<<<<<<< HEAD
-var d=(s,t,o)=>new Promise((e,c)=>{var h=n=>{try{r(o.next(n))}catch(a){c(a)}},i=n=>{try{r(o.throw(n))}catch(a){c(a)}},r=n=>n.done?e(n.value):Promise.resolve(n.value).then(h,i);r((o=o.apply(s,t)).next())});function u(s){if(s.ok)return s.json();throw new Error("Bad Response")}export default class f{constructor(t){this.category=t,this.path=`../json/${this.category}.json`}getData(){fetch("../json/tents.json").then(u).then(t=>t)}findProductById(t){return d(this,null,function*(){const o=yield this.getData();return o.find(e=>e.Id===t)})}}
-=======
-var h=(r,t,n)=>new Promise((e,c)=>{var i=o=>{try{s(n.next(o))}catch(a){c(a)}},d=o=>{try{s(n.throw(o))}catch(a){c(a)}},s=o=>o.done?e(o.value):Promise.resolve(o.value).then(i,d);s((n=n.apply(r,t)).next())});function u(r){if(r.ok)return r.json();throw new Error("Bad Response")}export default class f{constructor(t){this.category=t,this.path=`../json/${this.category}.json`}getData(){return fetch(this.path).then(u).then(t=>t)}findProductById(t){return h(this,null,function*(){const n=yield this.getData();return n.find(e=>e.Id===t)})}}
->>>>>>> 478d4ee478915d46859f0274e279cccc0e4efb10
+function convertToJson(res) {
+  if (res.ok) {
+    return res.json();
+  } else {
+    throw new Error("Bad Response");
+  }
+}
+
+export default class ProductData {
+  constructor(category) {
+    this.category = category;
+    this.path = `../json/${this.category}.json`;
+  }
+  getData() {
+    return fetch(this.path)
+      .then(convertToJson)
+      .then((data) => data);
+  }
+
+  async findProductById(id) {
+    const products = await this.getData();
+    return products.find((item) => item.Id === id);
+
+    // setLocalStorage(`so-cart${product.Id}`, product);
+  }
+}
+
+///////////////////////////////////
+
+// let products = [];
+// var localStorageitems = [];
+
+// function setLocalStorage(key, data) {
+//   localStorage.setItem(key, JSON.stringify(data));
+// }
+
+// // get tents data
+// function getProductsData() {
+//   fetch("../json/tents.json")
+//     .then(convertToJson)
+//     .then((data) => {
+//       products = data;
+//     });
+// }
+
+// function addToCart(e) {
+//   console.log("clicked");
+//   const product = products.find((item) => item.Id === e.target.dataset.id);
+//   setLocalStorage(`so-cart${product.Id}`, product);
+// }
+
+// getProductsData();
+// // add listener to Add to Cart button
+// document.getElementById("addToCart").addEventListener("click", addToCart);
