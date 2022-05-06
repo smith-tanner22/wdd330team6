@@ -1,23 +1,34 @@
-import ProductData from "./productData.js";
-import ProductDetails from "./productDetails.js";
-import { getParam } from "./utils.js";
+function convertToJson(res) {
+  if (res.ok) {
+    return res.json();
+  } else {
+    throw new Error("Bad Response");
+  }
+}
 
-const productId = getParam("product");
-const dataSource = new ProductData("tents");
+export default class ProductData {
+  constructor(category) {
+    this.category = category;
+    this.path = `../json/${this.category}.json`;
+  }
+  getData() {
+    return fetch(this.path)
+      .then(convertToJson)
+      .then((data) => data);
+  }
 
-const product = new ProductDetails(productId, dataSource);
+  async findProductById(id) {
+    const products = await this.getData();
+    return products.find((item) => item.Id === id);
 
-product.init();
+    // setLocalStorage(`so-cart${product.Id}`, product);
+  }
+}
+
+///////////////////////////////////
 
 // let products = [];
 // var localStorageitems = [];
-// function convertToJson(res) {
-//   if (res.ok) {
-//     return res.json();
-//   } else {
-//     throw new Error("Bad Response");
-//   }
-// }
 
 // function setLocalStorage(key, data) {
 //   localStorage.setItem(key, JSON.stringify(data));
@@ -31,12 +42,7 @@ product.init();
 //       products = data;
 //     });
 // }
-// // or should we do it this way?
-// // async function getProductsDataAwait() {
-// //   products = await fetch('../json/tents.json').then(convertToJson);
-// // }
 
-// // add to cart button event handler
 // function addToCart(e) {
 //   console.log("clicked");
 //   const product = products.find((item) => item.Id === e.target.dataset.id);
