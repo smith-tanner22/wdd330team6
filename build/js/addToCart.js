@@ -1,0 +1,1 @@
+const element=document.getElementById("addToCart");element.addEventListener("click",function(){console.log("we are in")}),console.log("it is not in the function");function myFunction(){console.log("we are in")}

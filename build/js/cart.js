@@ -1,4 +1,4 @@
-function getLocalStorage(t){return JSON.parse(localStorage.getItem(t))}function getCartContents(){let t="";const e=getLocalStorage("so-cart");console.log(e);const a=e.map(r=>renderCartItem(r));document.querySelector(".product-list").innerHTML=a.join("")}function renderCartItem(t){console.log(index);const e=`<li class="cart-card divider">
+function getLocalStorage(t){return JSON.parse(localStorage.getItem(t))}const items=[];function getCartContents(){let t="";const e=getLocalStorage("so-cart");if(console.log(e),e){const a=e.map(r=>renderCartItem(r));document.querySelector(".product-list").innerHTML=a.join("")}}function renderCartItem(t){const e=`<li class="cart-card divider">
   <a href="#" class="cart-card__image">
     <img
       src="${t.Image}"
