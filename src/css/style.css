@@ -17,7 +17,13 @@
 * {
   box-sizing: border-box;
 }
-
+.btn-danger{
+  background-color: red;
+  margin: 0;
+  padding: 0px;
+  align-self:stretch;
+  border-radius: 5px;
+}
 body {
   margin: 0;
   font-family: var(--font-body);

@@ -3,7 +3,7 @@ export default class ProductListing {
     this.category = category;
     this.dataSource = dataSource;
     this.listElement = listElement;
-    this.init();
+    
   }
   async init() {
     const list = await this.dataSource.getData();
