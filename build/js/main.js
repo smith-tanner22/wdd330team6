@@ -1,1 +1,1 @@
-import t from"./productData.js";import o from"./productList.js";const a=new t,r=new o;console.table(r);
+import o from"./productList.js";import c from"./productData.js";const e=document.querySelector(".product-list"),t=new c("tents"),r=new o("tents",t,e);console.table(r),console.table(t);
