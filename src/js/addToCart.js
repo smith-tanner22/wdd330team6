@@ -1,7 +1,7 @@
 const element = document.getElementById('addToCart');
 element.addEventListener('click', function () {
   console.log('we are in');
-})
+});
 /*
 document.getElementById('addToCart').addEventListener('click', function () {
   console.log('its in the function');
