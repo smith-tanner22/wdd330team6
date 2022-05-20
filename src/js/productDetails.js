@@ -22,6 +22,10 @@ export default class ProductDetails {
 
   renderProductDetails() {
     const discountedPrice = this.product.SuggestedRetailPrice - this.product.FinalPrice;
+    const formattedDiscount = (discountedPrice).toLocaleString('en-US', {
+      style: 'currency',
+      currency: 'USD',
+    });
     return `<section class="product-detail"> <h3>${this.product.Brand.Name}</h3>
     <h2 class="divider">${this.product.NameWithoutBrand}</h2>
     <img
@@ -30,7 +34,7 @@ export default class ProductDetails {
       alt="${this.product.NameWithoutBrand}"
     />
     <p>Orginal: $${this.product.SuggestedRetailPrice}</p>
-    <p class="product_discount_price">You save: $${discountedPrice}</p>
+    <p class="product_discount_price">You save: ${formattedDiscount}</p>
     <p class="product-card__price">$${this.product.FinalPrice}</p>
     <p class="product__color">${this.product.Colors[0].ColorName}</p>
     <p class="product__description">
