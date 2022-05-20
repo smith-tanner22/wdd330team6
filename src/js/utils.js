@@ -22,6 +22,7 @@ export function setLocalStorage(key, data) {
     var stored = JSON.parse(localStorage.getItem(key));
     stored.push(data);
     localStorage.setItem(key, JSON.stringify(stored));
+    animateSvg();
   }
 }
 // set a listener for both touchend and click
@@ -38,4 +39,12 @@ export function getParam(param) {
 
   const urlParams = new URLSearchParams(queryString);
   return urlParams.get(param);
+}
+
+function animateSvg() {
+  const cart = document.querySelector('.cart');
+  cart.style.transform = 'rotate(-360deg)';
+  cart.style.transition = 'all .5s linear';
+  // cart.style.transform = 'rotate(10deg)';
+  // cart.style.transition = 'all .3s linear';
 }
