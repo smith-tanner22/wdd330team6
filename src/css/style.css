@@ -17,13 +17,15 @@
 * {
   box-sizing: border-box;
 }
-.btn-danger{
+
+.btn-danger {
   background-color: red;
   margin: 0;
   padding: 0px;
-  align-self:stretch;
+  align-self: stretch;
   border-radius: 5px;
 }
+
 body {
   margin: 0;
   font-family: var(--font-body);
@@ -178,6 +180,10 @@ button {
 .product-card h3,
 .product-card p {
   margin: 0.5em 0;
+}
+
+.product_discount_price {
+  color: red;
 }
 
 .card__brand {
