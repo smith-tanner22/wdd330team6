@@ -22,10 +22,19 @@ export default class ProductListing {
     })
   }
   prepareTemplate(template, product) {
+    const discounted = product.SuggestedRetailPrice- product.FinalPrice;
+    const formattedDiscount = (discounted).toLocaleString('en-US', {
+ style: 'currency',
+ currency: 'USD',
+ });
+    
+
+
     template.querySelector('a').href += product.Id;
     template.querySelector('.card__brand').innerHTML = product.Brand.Name;
     template.querySelector('.card__name').innerHTML = product.Name;
     template.querySelector('.product-card__price').innerHTML = product.FinalPrice;
+    template.querySelector('.product_discount_price').innerHTML =`You Save ${formattedDiscount}`;
 
 
     // fill in the rest of the data here...
