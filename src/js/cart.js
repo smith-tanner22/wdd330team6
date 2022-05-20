@@ -12,13 +12,13 @@ function getCartContents() {
 
   console.log(cartItems);
   if (cartItems) {
-    const htmlItems = cartItems.map((item) => renderCartItem(item));
+    const htmlItems = cartItems.map((item,index) => renderCartItem(item,index));
     document.querySelector('.product-list').innerHTML = htmlItems.join('');
   }
   // document.querySelector('.product-list').innerHTML = renderCartItem(cartItems);
 }
 
-function renderCartItem(item) {
+function renderCartItem(item,index) {
   const newItem = `<li class="cart-card divider">
   <a href="#" class="cart-card__image">
     <img
@@ -32,6 +32,7 @@ function renderCartItem(item) {
   <p class="cart-card__color">${item.Colors[0].ColorName}</p>
   <p class="cart-card__quantity">qty: 1</p>
   <p class='cart-card__price'>$${item.FinalPrice}</p>
+  <button class='btn-danger${index}'value=${index}>Remove From Cart</button>
 </li>`;
   return newItem;
 }
@@ -62,4 +63,19 @@ function addTotal() {
   return total;
 }
 
+function removeItem(){
+  const Items = getLocalStorage("so-cart");
+  for (let index = 0; index < Object.keys(Items).length; index++) {
+    const element = document.querySelector(`.btn-danger${index}`)
+    element.addEventListener('click', ()=>{
+      console.log(element.value)
+      Items.splice(index, 1);
+      localStorage.setItem('so-cart',JSON.stringify(Items));
+      location.reload();
+    })
+  }
+  
+ 
+}
+removeItem();
 hideTotal();

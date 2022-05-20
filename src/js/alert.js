@@ -18,7 +18,7 @@ export default class Alert {
     }
 
     async init() {
-        this.outputElement.innerHTML = this.alertTemplate();
+        this.outputElement.innerHTML = this.alertTemplate;
         const alerts = await this.getAlerts();
         this.renderAlert(alerts, outputElement.innerHTML, ".alertList");
     }

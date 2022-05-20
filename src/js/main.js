@@ -8,6 +8,6 @@ const productList = new ProductListing('tents', productData, head);
 // const alert = new Alert();
 loadHeaderFooter();
 
-
-// console.table(productList);
-// console.table(productData);
+productList.init();
+console.table(productList);
+console.table(productData);
