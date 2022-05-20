@@ -130,19 +130,6 @@ button {
   text-align: center;
 }
 
-
-.cart {
-  -moz-transition: all 2s linear;
-  -webkit-transition: all 2s linear;
-  transition: all 2s linear;
-}
-
-.cart.rotate {
-  -moz-transform: rotate(-180deg);
-  -webkit-transform: rotate(-180deg);
-  transform: rotate(-180deg);
-}
-
 .cart svg {
   width: 25px;
 }

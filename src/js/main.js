@@ -12,5 +12,5 @@ loadHeaderFooter();
 // console.table(productData);
 
 productList.init();
-console.table(productList);
-console.table(productData);
+// console.table(productList);
+// console.table(productData);

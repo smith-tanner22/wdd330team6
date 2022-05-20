@@ -70,13 +70,15 @@ export async function loadTemplate(path) {
 }
 
 export async function loadHeaderFooter() {
-  const header = loadTemplate('../partials/header.html');
-  const footer = loadTemplate('../partials/footer.html');
+  const header = await loadTemplate('../partials/header.html');
+  const footer = await loadTemplate('../partials/footer.html');
+  console.log(header, footer);
   const headerElement = document.getElementById('main-header');
-  const footerElement = document.getElementById('footer-header');
+  const footerElement = document.getElementById('main-footer');
   renderWithTemplate(headerElement, header);
   renderWithTemplate(footerElement, footer);
 } 
+
 function animateSvg() {
   const cart = document.querySelector('.cart');
   cart.style.transform = 'rotate(-360deg)';
