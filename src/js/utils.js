@@ -41,6 +41,44 @@ export function getParam(param) {
   return urlParams.get(param);
 }
 
+export function renderWithTemplate(parent, template, data, callback) {
+  // const template = document.getElementById('');
+  const clone = template.content.cloneNode(true);
+  if(callback) {
+    clone = callback(clone, data);
+  }
+  parent.appendChild(clone);
+  // insert the actual details of the current product into the template
+  // const hydratedTemplate = this.prepareTemplate(clone, data);
+  // console.log(hydratedTemplate);
+  // this.listElement.appendChild(hydratedTemplate);
+}
+
+function convertToText(res) {
+  if (res.ok) {
+    return res.text();
+  } else {
+    throw new Error("No path");
+  }
+}
+
+export async function loadTemplate(path) {
+  const html = await fetch(path).then(convertToText);
+  const template = document.createElement('template');
+  template.innerHTML = html;
+  return template;
+}
+
+export async function loadHeaderFooter() {
+  const header = await loadTemplate('../partials/header.html');
+  const footer = await loadTemplate('../partials/footer.html');
+  console.log(header, footer);
+  const headerElement = document.getElementById('main-header');
+  const footerElement = document.getElementById('main-footer');
+  renderWithTemplate(headerElement, header);
+  renderWithTemplate(footerElement, footer);
+} 
+
 function animateSvg() {
   const cart = document.querySelector('.cart');
   cart.style.transform = 'rotate(-360deg)';

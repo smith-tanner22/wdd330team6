@@ -1,3 +1,5 @@
+import { loadHeaderFooter } from "./utils";
+
 function getLocalStorage(key) {
   return JSON.parse(localStorage.getItem(key));
 }
@@ -10,8 +12,8 @@ function getCartContents() {
 
   const cartItems = getLocalStorage("so-cart");
 
-  console.log(cartItems);
   if (cartItems) {
+    console.log(cartItems);
     const htmlItems = cartItems.map((item,index) => renderCartItem(item,index));
     document.querySelector('.product-list').innerHTML = htmlItems.join('');
   }
@@ -79,3 +81,4 @@ function removeItem(){
 }
 removeItem();
 hideTotal();
+loadHeaderFooter();
