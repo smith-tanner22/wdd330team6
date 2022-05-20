@@ -17,13 +17,15 @@
 * {
   box-sizing: border-box;
 }
-.btn-danger{
+
+.btn-danger {
   background-color: red;
   margin: 0;
   padding: 0px;
-  align-self:stretch;
+  align-self: stretch;
   border-radius: 5px;
 }
+
 body {
   margin: 0;
   font-family: var(--font-body);
@@ -131,18 +133,6 @@ button {
 }
 
 
-.cart {
-  -moz-transition: all 2s linear;
-  -webkit-transition: all 2s linear;
-  transition: all 2s linear;
-}
-
-.cart.rotate {
-  -moz-transform: rotate(-180deg);
-  -webkit-transform: rotate(-180deg);
-  transform: rotate(-180deg);
-}
-
 .cart svg {
   width: 25px;
 }
@@ -191,6 +181,10 @@ button {
 .product-card h3,
 .product-card p {
   margin: 0.5em 0;
+}
+
+.product_discount_price {
+  color: red;
 }
 
 .card__brand {

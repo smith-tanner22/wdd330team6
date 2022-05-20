@@ -1,4 +1,6 @@
-import { setLocalStorage } from "./utils.js";
+import {
+  setLocalStorage
+} from "./utils.js";
 
 export default class ProductDetails {
   constructor(productId, dataSource) {
@@ -8,10 +10,10 @@ export default class ProductDetails {
   }
   async init() {
     this.product = await this.dataSource.findProductById(this.productId);
-   document.querySelector("main").innerHTML = this.renderProductDetails();
+    document.querySelector("main").innerHTML = this.renderProductDetails();
     // add listener to Add to Cart button
-   const element = document.getElementById("addToCart")
-   element.addEventListener("click", this.addToCart.bind(this));
+    const element = document.getElementById("addToCart")
+    element.addEventListener("click", this.addToCart.bind(this));
   }
 
   addToCart() {
@@ -19,6 +21,7 @@ export default class ProductDetails {
   }
 
   renderProductDetails() {
+    const discountedPrice = this.product.SuggestedRetailPrice - this.product.FinalPrice;
     return `<section class="product-detail"> <h3>${this.product.Brand.Name}</h3>
     <h2 class="divider">${this.product.NameWithoutBrand}</h2>
     <img
@@ -26,6 +29,8 @@ export default class ProductDetails {
       src="${this.product.Image}"
       alt="${this.product.NameWithoutBrand}"
     />
+    <p>Orginal: $${this.product.SuggestedRetailPrice}</p>
+    <p class="product_discount_price">You save: $${discountedPrice}</p>
     <p class="product-card__price">$${this.product.FinalPrice}</p>
     <p class="product__color">${this.product.Colors[0].ColorName}</p>
     <p class="product__description">
