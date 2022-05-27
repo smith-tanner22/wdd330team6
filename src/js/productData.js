@@ -11,11 +11,12 @@ function convertToJson(res) {
 export default class ProductData {
   constructor() {
 
-    // this.category = category;
+    //this.category = category;
     // this.path = `../json/${this.category}.json`;
   }
-  getData(id) {
-    return fetch(baseURL + `product/${id}`)
+  getData(category) {
+
+    return fetch(baseURL + `products/search/${category}`)
       .then(convertToJson).then((data) => data.Result);
     // return fetch(this.path)
     //   .then(convertToJson)
@@ -23,8 +24,11 @@ export default class ProductData {
   }
 
   async findProductById(id) {
-    const products = await this.getData(id);
-    return products.find((item) => item.Id === id);
+    // const products = await this.getData(id);
+    // return products.find((item) => item.Id === id);
+    return await fetch(baseURL + `product/${id}`)
+      .then(convertToJson).then((data) => data.Result);
+
 
     // setLocalStorage(`so-cart${product.Id}`, product);
   }

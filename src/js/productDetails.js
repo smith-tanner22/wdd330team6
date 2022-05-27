@@ -30,7 +30,9 @@ export default class ProductDetails {
     <h2 class="divider">${this.product.NameWithoutBrand}</h2>
     <img
       class="divider"
-      src="${this.product.Image}"
+      src="${this.product.Images.PrimaryLarge}"
+      ${console.log(this.product)}
+
       alt="${this.product.NameWithoutBrand}"
     />
     <p>Orginal: $${this.product.SuggestedRetailPrice}</p>

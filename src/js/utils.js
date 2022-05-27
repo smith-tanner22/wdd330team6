@@ -44,7 +44,7 @@ export function getParam(param) {
 export function renderWithTemplate(parent, template, data, callback) {
   // const template = document.getElementById('');
   const clone = template.content.cloneNode(true);
-  if(callback) {
+  if (callback) {
     clone = callback(clone, data);
   }
   parent.appendChild(clone);
@@ -72,12 +72,12 @@ export async function loadTemplate(path) {
 export async function loadHeaderFooter() {
   const header = await loadTemplate('../partials/header.html');
   const footer = await loadTemplate('../partials/footer.html');
-  console.log(header, footer);
+
   const headerElement = document.getElementById('main-header');
   const footerElement = document.getElementById('main-footer');
   renderWithTemplate(headerElement, header);
   renderWithTemplate(footerElement, footer);
-} 
+}
 
 function animateSvg() {
   const cart = document.querySelector('.cart');
