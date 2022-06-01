@@ -33,7 +33,7 @@ export default class ProductListing {
     template.querySelector('a').href += product.Id;
     template.querySelector('.card__brand').innerHTML = product.Brand.Name;
     template.querySelector('.card__name').innerHTML = product.Name;
-    template.querySelector('.product-card__price').innerHTML = `$ ${product.FinalPrice}`;
+    template.querySelector('.product-card__price').innerHTML = `$${product.FinalPrice}`;
     template.querySelector('.product_discount_price').innerHTML = `You Save ${formattedDiscount}`;
 
 
