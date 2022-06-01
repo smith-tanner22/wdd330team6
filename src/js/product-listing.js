@@ -4,6 +4,8 @@ import {
   loadHeaderFooter,
   getParam
 } from './utils';
+
+
 const category = getParam("category");
 
 const dataSource = new ProductData();
