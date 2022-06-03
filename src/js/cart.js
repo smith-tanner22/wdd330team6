@@ -16,6 +16,8 @@ function getCartContents() {
     console.log(cartItems);
     const htmlItems = cartItems.map((item,index) => renderCartItem(item,index));
     document.querySelector('.product-list').innerHTML = htmlItems.join('');
+  } else {
+    
   }
   // document.querySelector('.product-list').innerHTML = renderCartItem(cartItems);
 }
@@ -62,7 +64,7 @@ function addTotal() {
   for (let index = 0; index < Object.keys(Items).length; index++) {
     total = total + Items[index]["FinalPrice"];
   }
-  return total;
+  return (total.toFixed(2));
 }
 
 function removeItem(){

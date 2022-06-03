@@ -31,7 +31,7 @@ export default class Alert {
     </section>`;
   }
 
-  renderAlert(alerts, template, outputClassName) {
+  renderAlert(alerts, template) {
     const element = document.querySelector(".divider");
     console.log(alerts[0].message);
     element.innerHTML = " ";
