@@ -16,8 +16,18 @@ function getCartContents() {
 
   if (cartItems) {
     console.log(cartItems);
+    let ids = [];
+    cartItems.forEach(item => {
+      ids.push(item.Id);
+    });
+    if (ids.length > 1) {
+
+    }
+    console.log(ids);
     const htmlItems = cartItems.map((item, index) => renderCartItem(item, index));
     document.querySelector('.product-list').innerHTML = htmlItems.join('');
+
+    console.log(htmlItems);
   }
   // document.querySelector('.product-list').innerHTML = renderCartItem(cartItems);
 }
@@ -34,7 +44,7 @@ function renderCartItem(item, index) {
     <h2 class="card__name">${item.Name}</h2>
   </a>
   <p class="cart-card__color">${item.Colors[0].ColorName}</p>
-  <p class="cart-card__quantity">qty: 1</p>
+  <p class="cart-card__quantity">qty: <span id="cartQuanitity">1</span></p>
   <p class='cart-card__price'>$${item.FinalPrice}</p>
   <button class='btn-danger btn-danger${index}'value=${index}>Remove From Cart</button>
 </li>`;
