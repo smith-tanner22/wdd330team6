@@ -1,4 +1,6 @@
-import { loadHeaderFooter } from "./utils";
+import {
+  loadHeaderFooter
+} from "./utils";
 
 function getLocalStorage(key) {
   return JSON.parse(localStorage.getItem(key));
@@ -14,13 +16,13 @@ function getCartContents() {
 
   if (cartItems) {
     console.log(cartItems);
-    const htmlItems = cartItems.map((item,index) => renderCartItem(item,index));
+    const htmlItems = cartItems.map((item, index) => renderCartItem(item, index));
     document.querySelector('.product-list').innerHTML = htmlItems.join('');
   }
   // document.querySelector('.product-list').innerHTML = renderCartItem(cartItems);
 }
 
-function renderCartItem(item,index) {
+function renderCartItem(item, index) {
   const newItem = `<li class="cart-card divider">
   <a href="#" class="cart-card__image">
     <img
@@ -65,19 +67,19 @@ function addTotal() {
   return total;
 }
 
-function removeItem(){
+function removeItem() {
   const Items = getLocalStorage("so-cart");
   for (let index = 0; index < Object.keys(Items).length; index++) {
     const element = document.querySelector(`.btn-danger${index}`)
-    element.addEventListener('click', ()=>{
+    element.addEventListener('click', () => {
       console.log(element.value)
       Items.splice(index, 1);
-      localStorage.setItem('so-cart',JSON.stringify(Items));
+      localStorage.setItem('so-cart', JSON.stringify(Items));
       location.reload();
     })
   }
-  
- 
+
+
 }
 removeItem();
 hideTotal();
