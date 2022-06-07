@@ -265,6 +265,14 @@ button {
   .order_form input {
     margin-bottom: 15px;
   }
+  #newsletter {
+    background-color: #f1f1f1;
+  }
+  #subscribe {
+    background-color: green;
+    color: white;
+    border: none;
+  }
 }
 
 footer {
