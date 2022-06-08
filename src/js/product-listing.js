@@ -1,5 +1,5 @@
 import ProductListing from './productList';
-import ProductData from './productData';
+import ExternalServices from './ExternalServices';
 import {
   loadHeaderFooter,
   getParam
@@ -8,7 +8,7 @@ import {
 
 const category = getParam('category');
 
-const dataSource = new ProductData();
+const dataSource = new ExternalServices();
 // then get the element we want the product list to render in
 const listElement = document.querySelector('.product-list');
 console.log(category);

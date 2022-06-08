@@ -12,6 +12,48 @@
     <main class="divider">
       <section class="products">
         <h2>Review & Place your Order</h2>
+        <form class="order_form">
+        <fieldset class="checkout_form">
+          <legend>Shipping:</legend>
+          <label>First Name</label>
+          <input type="text" name="fname">
+          <label>Last Name</label>
+          <input type="text" name="lname">
+          <label>Street</label>
+          <input type="text" name="street">
+          <label>City</label>
+          <input type="text" name="city">
+          <label>State</label>
+          <input type="text" name="state">
+          <label>Zip</label>
+          <input type="text" name="zip">
+        </fieldset>
+        <fieldset class="checkout_form">
+          <legend>Payment</legend>
+          <label>Card Number</label>
+          <input type="text" name="cardNumber" value="1234123412341234">
+          <label>Expiration</label>
+          <input type="text" name="expiration">
+          <label>Security Code</label>
+          <input type="text" name="code" value="123">
+        </fieldset>
+        </form>
+        <fieldset class="checkout_form">
+          <legend>Order Summary</legend>
+          <p>Item Subtotal
+            <span></span>
+          </p>
+          <p>Shipping Estimate
+            <span></span>
+          </p>
+          <p>Tax
+            <span></span>
+          </p>
+          <strong>Order Total
+            <span></span>
+          </strong>
+        </fieldset>
+        <button id="place_order" type="submit">Place Order</button>
       </section>
     </main>
     <footer id="main-footer"></footer>

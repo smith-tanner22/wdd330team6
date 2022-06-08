@@ -259,6 +259,21 @@ button {
     font-size: inherit;
     grid-template-columns: 150px auto 15%;
   }
+  .checkout_form {
+    display: flex;
+    flex-direction: column;
+  }
+  .order_form input {
+    margin-bottom: 15px;
+  }
+  #newsletter {
+    background-color: #f1f1f1;
+  }
+  #subscribe {
+    background-color: green;
+    color: white;
+    border: none;
+  }
 }
 
 /* Banner CSS */

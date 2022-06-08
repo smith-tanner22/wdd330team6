@@ -8,7 +8,7 @@ function convertToJson(res) {
   }
 }
 
-export default class ProductData {
+export default class ExternalServices {
   constructor() {
 
     //this.category = category;
@@ -31,6 +31,16 @@ export default class ProductData {
 
 
     // setLocalStorage(`so-cart${product.Id}`, product);
+  }
+  checkout(payload) {
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(payload)
+    }
+    fetch(baseURL, options);
   }
 }
 

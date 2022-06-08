@@ -46,11 +46,16 @@ export default class ProductDetails {
       style: 'currency',
       currency: 'USD',
     });
+    if (window.innerWidth < 500) {
+      var picture = this.product.Images.PrimaryMedium;
+    } else {
+      var picture = this.product.Images.PrimaryLarge;
+    }
     return `<section class="product-detail"> <h3>${this.product.Brand.Name}</h3>
     <h2 class="divider">${this.product.NameWithoutBrand}</h2>
     <img
       class="divider"
-      src="${this.product.Images.PrimaryLarge}"
+      src="${picture}"
       ${console.log(this.product)}
 
       alt="${this.product.NameWithoutBrand}"
