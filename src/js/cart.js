@@ -26,25 +26,26 @@ function getCartContents() {
     document.querySelector('.product-list').innerHTML = htmlItems.join('');
   } else {
 
-   document.querySelector('.product-list').innerHTML= "Empty"
+    document.querySelector('.product-list').innerHTML = 'Empty'
   }
   // document.querySelector('.product-list').innerHTML = renderCartItem(cartItems);
 }
 
 function renderCartItem(item, index) {
+
   const newItem = `<li class="cart-card divider">
   <a href="#" class="cart-card__image">
     <img
-      src="${item.Images.PrimaryMedium}"
-      alt="${item.Name}"
+      src="${item[index].Images.PrimaryMedium}"
+      alt="${item[index].Name}"
     />
   </a>
   <a href="#">
-    <h2 class="card__name">${item.Name}</h2>
+    <h2 class="card__name">${item[index].Name}</h2>
   </a>
-  <p class="cart-card__color">${item.Colors[0].ColorName}</p>
+  <p class="cart-card__color">${item[index].Colors[0].ColorName}</p>
   <p class="cart-card__quantity">qty: <span id="cartQuanitity">1</span></p>
-  <p class='cart-card__price'>$${item.FinalPrice}</p>
+  <p class='cart-card__price'>$${item[index].FinalPrice}</p>
   <button class='btn-danger btn-danger${index}'value=${index}>Remove From Cart</button>
 </li>`;
   return newItem;
@@ -65,7 +66,7 @@ getCartContents();
 
 function hideTotal() {
   const Items = getLocalStorage('so-cart');
-  console.log('this is hidee', Items);
+
   var totalElement = document.querySelector('.cart-footer');
   console.log(totalElement);
   if (Items) {
@@ -78,37 +79,35 @@ function hideTotal() {
 
 function addTotal() {
   const Items = getLocalStorage('so-cart');
-  if(Items)
-  {
+  if (Items) {
     var total = 0;
-  for (let index = 0; index < Object.keys(Items).length; index++) {
-    total = total + Items[index]['FinalPrice'];
-  }
-  return (total.toFixed(2));
+    for (let index = 0; index < Object.keys(Items).length; index++) {
+      total = total + Items[index]['FinalPrice'];
+    }
+    return (total.toFixed(2));
 
   }
-  
 
-  }
- 
+
+}
+
 
 
 function removeItem() {
   const Items = getLocalStorage('so-cart');
-  if(Items)
-  {
+  if (Items) {
     for (let index = 0; index < Object.keys(Items).length; index++) {
-    const element = document.querySelector(`.btn-danger${index}`)
-    element.addEventListener('click', () => {
-      console.log(element.value)
-      Items.splice(index, 1);
-      localStorage.setItem('so-cart', JSON.stringify(Items));
-      location.reload();
-    })
-  }
+      const element = document.querySelector(`.btn-danger${index}`)
+      element.addEventListener('click', () => {
+        console.log(element.value)
+        Items.splice(index, 1);
+        localStorage.setItem('so-cart', JSON.stringify(Items));
+        location.reload();
+      })
+    }
 
   }
-  
+
 
 
 }
