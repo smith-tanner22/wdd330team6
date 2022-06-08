@@ -1,6 +1,6 @@
 import {
   loadHeaderFooter
-} from "./utils";
+} from './utils';
 
 function getLocalStorage(key) {
   return JSON.parse(localStorage.getItem(key));
@@ -10,9 +10,9 @@ function getLocalStorage(key) {
 const items = [];
 
 function getCartContents() {
-  let markup = "";
+  let markup = '';
 
-  const cartItems = getLocalStorage("so-cart");
+  const cartItems = getLocalStorage('so-cart');
 
   if (cartItems) {
     console.log(cartItems);
@@ -20,9 +20,7 @@ function getCartContents() {
     cartItems.forEach(item => {
       ids.push(item.Id);
     });
-    if (ids.length > 1) {
 
-    }
     console.log(ids);
     const htmlItems = cartItems.map((item, index) => renderCartItem(item, index));
     document.querySelector('.product-list').innerHTML = htmlItems.join('');
@@ -56,29 +54,29 @@ getCartContents();
 /*****************************Added******************************************* */
 
 function hideTotal() {
-  const Items = getLocalStorage("so-cart");
-  console.log("this is hidee", Items);
-  var totalElement = document.querySelector(".cart-footer");
+  const Items = getLocalStorage('so-cart');
+  console.log('this is hidee', Items);
+  var totalElement = document.querySelector('.cart-footer');
   console.log(totalElement);
   if (Items) {
-    totalElement.style.visibility = "visible";
+    totalElement.style.visibility = 'visible';
   } else {
-    totalElement.style.visibility = "hidden";
+    totalElement.style.visibility = 'hidden';
   }
-  totalElement.innerHTML = "Total $" + addTotal();
+  totalElement.innerHTML = 'Total $' + addTotal();
 }
 
 function addTotal() {
-  const Items = getLocalStorage("so-cart");
+  const Items = getLocalStorage('so-cart');
   var total = 0;
   for (let index = 0; index < Object.keys(Items).length; index++) {
-    total = total + Items[index]["FinalPrice"];
+    total = total + Items[index]['FinalPrice'];
   }
   return total;
 }
 
 function removeItem() {
-  const Items = getLocalStorage("so-cart");
+  const Items = getLocalStorage('so-cart');
   for (let index = 0; index < Object.keys(Items).length; index++) {
     const element = document.querySelector(`.btn-danger${index}`)
     element.addEventListener('click', () => {
