@@ -21,7 +21,6 @@ export default class Alert {
   async init() {
       const alerts = await this.getAlerts();
       this.outputElement.innerHTML = this.alertTemplate();
-      // this.outputElement.querySelector(".divider") = alerts;
       this.renderAlert(alerts, this.alertTemplate, ".alertList");
   }
 

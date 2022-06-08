@@ -10,12 +10,13 @@ export function getLocalStorage(key) {
   return JSON.parse(localStorage.getItem(key));
 }
 
-var items = [];
+
 // save data to local storage
 export function setLocalStorage(key, data) {
   var item = localStorage.getItem(key);
 
   if (item == null) {
+    var items = [];
     items.push(data);
     localStorage.setItem(key, JSON.stringify(items));
   } else {

@@ -17,7 +17,8 @@ function getCartContents() {
     const htmlItems = cartItems.map((item,index) => renderCartItem(item,index));
     document.querySelector('.product-list').innerHTML = htmlItems.join('');
   } else {
-    
+
+   document.querySelector('.product-list').innerHTML= "Empty"
   }
   // document.querySelector('.product-list').innerHTML = renderCartItem(cartItems);
 }
@@ -41,6 +42,15 @@ function renderCartItem(item,index) {
   return newItem;
 }
 
+
+function renderCartEmptyItem() {
+  const newItem = `<li class="cart-card divider">
+  <p class='cart-card__price'>Empty Cart</p>
+
+</li>`;
+  return newItem;
+}
+
 getCartContents();
 
 /*****************************Added******************************************* */
@@ -60,16 +70,23 @@ function hideTotal() {
 
 function addTotal() {
   const Items = getLocalStorage("so-cart");
-  var total = 0;
+  if(Items)
+  {
+     var total = 0;
   for (let index = 0; index < Object.keys(Items).length; index++) {
     total = total + Items[index]["FinalPrice"];
   }
   return (total.toFixed(2));
+
+  }
+ 
 }
 
 function removeItem(){
   const Items = getLocalStorage("so-cart");
-  for (let index = 0; index < Object.keys(Items).length; index++) {
+  if(Items)
+  {
+   for (let index = 0; index < Object.keys(Items).length; index++) {
     const element = document.querySelector(`.btn-danger${index}`)
     element.addEventListener('click', ()=>{
       console.log(element.value)
@@ -77,6 +94,8 @@ function removeItem(){
       localStorage.setItem('so-cart',JSON.stringify(Items));
       location.reload();
     })
+  }
+   
   }
   
  
