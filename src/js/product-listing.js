@@ -6,7 +6,7 @@ import {
 } from './utils';
 
 
-const category = getParam("category");
+const category = getParam('category');
 
 const dataSource = new ExternalServices();
 // then get the element we want the product list to render in

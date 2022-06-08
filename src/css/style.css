@@ -117,6 +117,7 @@ button {
   display: block;
   border: 0;
   font-size: var(--large-font);
+  cursor: pointer;
 }
 
 .divider {
@@ -273,6 +274,30 @@ button {
     color: white;
     border: none;
   }
+}
+
+/* Banner CSS */
+.banner {
+  background-color: var(--primary-color);
+}
+
+.banner__content {
+  padding: 16px;
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+}
+
+.banner__text {
+  flex-grow: 1;
+  line-height: 1.4;
+}
+
+.banner__close {
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
 footer {

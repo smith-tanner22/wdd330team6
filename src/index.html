@@ -6,8 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sleep Outside | Home</title>
   <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
   <script src="./js/main.js" type="module"></script>
-  <script src="./js/newsletter.js"></script>
+  <script src="./js/banner.js" type="module"></script>
   <!-- <script src="./js/product.js" type="module"></script>  -->
   <template id="product-card-template">
     <li class="product-card">
@@ -26,6 +29,19 @@
   <!-- <button id="newsletter_button" onclick="newsletter()">Sign up for our newsletter</button> -->
   <header class="divider" id="main-header">
   </header>
+  <div class="banner">
+    <div class="banner__content">
+      <div class="banner__text">
+        First time? <a href="#">Sign up</a>!
+        Registered users will be entered into our weekly give away!
+      </div>
+      <button class="banner__close" type="button">
+        <span class="material-icons">
+          close
+        </span>
+      </button>
+    </div>
+  </div>
   <main class="divider">
     <div class="hero">
       <img src="images/banner-sm.jpg" srcset="images/banner-sm.jpg 500w, images/banner.jpg"
@@ -59,13 +75,13 @@
       </ul>
 
     </div>
-  <form>
-    <div id="newsletter">
-      <h2>Subscribe to our newsletter</h2>
-      <input type="email" placeholder="example@website.com">
-      <input type="submit" value="Subscribe" id="subscribe">
-    </div>
-  </form>
+    <form>
+      <div id="newsletter">
+        <h2>Subscribe to our newsletter</h2>
+        <input type="email" placeholder="example@website.com">
+        <input type="submit" value="Subscribe" id="subscribe">
+      </div>
+    </form>
     <section class="products">
       <h2>Top Products</h2>
       <ul class="product-list">

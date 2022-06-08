@@ -1,6 +1,7 @@
 import {
+  getLocalStorage,
   setLocalStorage
-} from "./utils.js";
+} from './utils.js';
 
 export default class ProductDetails {
   constructor(productId, dataSource) {
@@ -10,14 +11,33 @@ export default class ProductDetails {
   }
   async init() {
     this.product = await this.dataSource.findProductById(this.productId);
-    document.querySelector("main").innerHTML = this.renderProductDetails();
+    document.querySelector('main').innerHTML = this.renderProductDetails();
     // add listener to Add to Cart button
-    const element = document.getElementById("addToCart")
-    element.addEventListener("click", this.addToCart.bind(this));
+    const element = document.getElementById('addToCart')
+    element.addEventListener('click', this.addToCart.bind(this));
   }
 
   addToCart() {
-    setLocalStorage("so-cart", this.product);
+
+    this.product.quantity = 1;
+    let getItems = getLocalStorage('so-cart');
+
+    if (!getItems) {
+      getItems = [];
+    }
+
+    getItems.push(this.product);
+    setLocalStorage('so-cart', getItems);
+    console.log(getItems);
+    // const arrId = getItems.map(item => item.Id);
+    // console.log(arrId);
+    // const productCart = arrId.includes(this.product.Id);
+    // if (productCart) {
+    //   // do not add again
+
+    // }
+    // console.log(productCart);
+
   }
 
   renderProductDetails() {
