@@ -1,3 +1,7 @@
+import {
+  getLocalStorage,
+  setLocalStorage
+} from './utils.js';
 const baseURL = "http://157.201.228.93:2992/checkout";
 
 function packageItems(items) {
@@ -31,8 +35,19 @@ export default class CheckoutProcess {
       // once the totals are all calculated display them in the order summary page
       
     }
-    async checkout(form) {
+    async checkout() {
         event.preventDefault();
+        try {
+        //   document.querySelector('#place_order')
+        //   .addEventListener('click', (e) => {
+        //   e.preventDefault();
+        //   myCheckout.checkout();
+        // });
+          var formData = this.formDataToJSON(this.outputSelector);
+          console.log(formData);
+        } catch(err) {
+          // If it goes wrong
+        }
         // build the data object from the calculated fields, the items in the cart, and the information entered into the form
     
         // call the checkout method in our ExternalServices module and send it our data object.
