@@ -79,16 +79,15 @@ function hideTotal() {
 
 function addTotal() {
   const Items = getLocalStorage('so-cart');
+  console.log(Items);
   if (Items) {
     var total = 0;
     for (let index = 0; index < Object.keys(Items).length; index++) {
-      total = total + Items[index]['FinalPrice'];
+      total = total + Items[index][index]['FinalPrice'];
     }
     return (total.toFixed(2));
 
   }
-
-
 }
 
 
