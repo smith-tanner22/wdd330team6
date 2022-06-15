@@ -42,6 +42,17 @@ export default class ExternalServices {
     }
     fetch(baseURL, options);
   }
+  
+  async loginRequest(creds) {
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(creds)
+    }
+    return await fetch(baseURL, options).then(convertToJson).then((data) => data.Result);
+  }
 }
 
 ///////////////////////////////////
