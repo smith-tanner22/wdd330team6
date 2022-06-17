@@ -14,15 +14,24 @@ function getCartContents() {
 
   const cartItems = getLocalStorage('so-cart');
 
+  var count = 0;
   if (cartItems) {
     console.log(cartItems);
     let ids = [];
     cartItems.forEach(item => {
-      ids.push(item.Id);
+
+      if(ids.indexOf(item.id) !== -1)
+      {
+        count += 1 
+      }
+      else {
+        ids.push(item.Id);
+      }
+     
     });
 
     console.log(ids);
-    const htmlItems = cartItems.map((item, index) => renderCartItem(item, index));
+    const htmlItems = cartItems.map((item, index) => renderCartItem(item, index, 2));
     document.querySelector('.product-list').innerHTML = htmlItems.join('');
   } else {
 
@@ -31,7 +40,7 @@ function getCartContents() {
   // document.querySelector('.product-list').innerHTML = renderCartItem(cartItems);
 }
 
-function renderCartItem(item, index) {
+function renderCartItem(item, index, quantity) {
 
   const newItem = `<li class="cart-card divider">
   <a href="#" class="cart-card__image">
@@ -44,7 +53,7 @@ function renderCartItem(item, index) {
     <h2 class="card__name">${item[index].Name}</h2>
   </a>
   <p class="cart-card__color">${item[index].Colors[0].ColorName}</p>
-  <p class="cart-card__quantity">qty: <span id="cartQuanitity">1</span></p>
+  <p class="cart-card__quantity">qty: <span id="cartQuanitity">${quantity}</span></p>
   <p class='cart-card__price'>$${item[index].FinalPrice}</p>
   <button class='btn-danger btn-danger${index}'value=${index}>Remove From Cart</button>
 </li>`;
@@ -86,8 +95,8 @@ function addTotal() {
       total = total + Items[index][index]['FinalPrice'];
     }
     return (total.toFixed(2));
-
   }
+
 }
 
 
@@ -113,3 +122,9 @@ function removeItem() {
 removeItem();
 hideTotal();
 loadHeaderFooter();
+setTimeout(() => {
+var temp = JSON.parse(localStorage["so-cart"]);
+const count = Object.keys(temp).length
+const cartCount= document.getElementById("lblCartCount").innerHTML = count 
+
+}, "1000")

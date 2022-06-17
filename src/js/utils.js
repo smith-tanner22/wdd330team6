@@ -87,3 +87,16 @@ function animateSvg() {
   // cart.style.transform = 'rotate(10deg)';
   // cart.style.transition = 'all .3s linear';
 }
+
+
+export function addTotal() {
+  const Items = getLocalStorage('so-cart');
+  if (Items) {
+    var total = 0;
+    for (let index = 0; index < Object.keys(Items).length; index++) {
+      total = total + Items[index][index]['FinalPrice'];
+    }
+    return (total.toFixed(2));
+
+  }
+}

@@ -9,10 +9,13 @@ const productData = new ExternalServices('tents');
 const productList = new ProductListing('tents', productData, head);
 const alert = new Alert('divider');
 loadHeaderFooter();
-
-// console.table(productList);
-// console.table(productData);
-
 productList.init();
-// console.table(productList);
-// console.table(productData);
+
+setTimeout(() => {
+var temp = JSON.parse(localStorage["so-cart"]);
+const count = Object.keys(temp).length
+const cartCount= document.getElementById("lblCartCount").innerHTML = count 
+
+}, "1000")
+
+

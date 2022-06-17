@@ -37,24 +37,24 @@
           <label>Security Code</label>
           <input type="text" name="code" value="123" required>
         </fieldset>
-        </form>
+      </form>
         <fieldset class="checkout_form">
           <legend>Order Summary</legend>
           <p>Item Subtotal
-            <span></span>
+            <span id="subtotal"></span>
           </p>
           <p>Shipping Estimate
-            <span></span>
+            <span id="shipping"></span>
           </p>
           <p>Tax
-            <span></span>
+            <span id="tax"></span>
           </p>
           <strong>Order Total
-            <span></span>
+            <span id="Ordertotal"></span>
           </strong>
         </fieldset>
-        <button id="place_order" type="submit">Place Order</button>
       </section>
+    <button id="place_order" type="submit">Place Order</button>
     </main>
     <footer id="main-footer"></footer>
     <script src="../js/checkout.js" type="module"></script>
